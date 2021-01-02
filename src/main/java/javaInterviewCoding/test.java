@@ -1,2 +1,5 @@
-package javaInterviewCoding;public class test {
+package javaInterviewCoding;
+
+public class test {
+
 }
