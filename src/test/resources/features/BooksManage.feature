@@ -35,7 +35,7 @@ Feature:  As an authorized user, I should able to access Books  page and and man
 
 
   @login @AC2 @Dawut
-  Scenario: Login as a librarian
+  Scenario: Login as a librarian and verify the records are showing correctly with different set up
     #Given user is on the login page
     #When user logs in
     #Then user should see Library
