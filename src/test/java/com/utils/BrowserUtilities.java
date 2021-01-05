@@ -31,7 +31,11 @@ public class BrowserUtilities {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    public static void waitClickWithJS(WebElement element){
+    public static void waitVisibilityOfElement(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+        public static void waitClickWithJS(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         ((JavascriptExecutor)(Driver.getDriver())).executeScript("arguments[0].click()",element);
     }
