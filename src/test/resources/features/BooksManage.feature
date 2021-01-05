@@ -76,8 +76,8 @@ Feature:  As an authorized user, I should able to access Books  page and and man
     When user click "Edit Book" button
     Then The "Edit Book Information" form is displayed
 
-  @AC6@Roman
-  Scenario: AC4: User should able to sort records on Books page
-    Given I am at the Books Management page
-    When I click "ISBM"
-    Then "ISBM" coulm should be sort it
+  @Search @AC6 @Roman
+  Scenario: AC6 User should able to sort records on Books page
+  # I am at the Books Management page
+  When I click "ISBN"
+  Then "ISBN" column should be sort it
