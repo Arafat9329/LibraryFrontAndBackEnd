@@ -1,5 +1,6 @@
 package com.stepDefinitions;
 
+import com.pages.BooksPage;
 import com.pages.LoginPage;
 import com.utils.BrowserUtilities;
 import com.utils.ConfigurationReader;
