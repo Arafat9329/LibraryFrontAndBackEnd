@@ -2,11 +2,12 @@ Feature:  As an authorized user, I should able to access Books  page and and man
 
 
   Background:
-    #Arpat
+
     Given I am at the Books Management page
 
   @select_one_category @AC1@Rene
-  Scenario Outline: Select one of book category
+  Scenario Outline: AC1 Select one of book category
+
     Then user select "<Categories>" from Book Category
     And The table should display only "<Category>" books
     Examples:
@@ -35,7 +36,7 @@ Feature:  As an authorized user, I should able to access Books  page and and man
 
 
   @login @AC2 @Dawut
-  Scenario: Login as a librarian
+  Scenario:AC2 Login as a librarian and verify the records are showing correctly with different set up
     #Given user is on the login page
     #When user logs in
     #Then user should see Library
@@ -51,24 +52,24 @@ Feature:  As an authorized user, I should able to access Books  page and and man
       | 200 |
       | 500 |
 
-  @AC3@Elvira
-  Scenario: AC3: User should able to Add Book
-    #Given I am at the Books page
+  @AC3 @Elvira
+  Scenario: AC3 User should able to Add Book
+
     When user click "Add Book" button
     Then The "Add Book" form is displayed
 
-  @AC5@Gulhanim
-  Scenario: User should be change number of displayed records on the page
+  @AC4 @Gulhanim
+  Scenario: AC4 User should be change number of displayed records on the page
     When user select  page number
     Then should display only selected number of pages
 
-  @AC6@Bekir
-  Scenario: AC6: User should be able to Edit book
+  @AC5 @Bekir
+  Scenario: AC5 User should be able to Edit book
     When user click "Edit Book" button
     Then The "Edit Book Information" form is displayed
 
-    @AC6@Roman
-  Scenario AC4: User should able to sort records on Books page
-  Given I am at the Books Management page
-  When I click "ISBM"
-  Then "ISBM" coulm should be sort it
+
+  @AC6 @Roman
+  Scenario: AC6 User should able to sort records on Books page
+    When I click "ISBM"
+    Then "ISBM" coulm should be sort it
