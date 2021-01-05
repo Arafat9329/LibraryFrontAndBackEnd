@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com/stepDefinitions",
-        dryRun = true,
-        tags = "@Dawut"
+        dryRun = false,
+        tags = "@addBook"
 )
 
 public class CucumberRunner {

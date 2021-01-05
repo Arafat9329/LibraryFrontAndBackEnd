@@ -52,11 +52,18 @@ Feature:  As an authorized user, I should able to access Books  page and and man
       | 200 |
       | 500 |
 
-  @AC3@Elvira
+  @addBook @AC3 @Elvira
   Scenario: AC3: User should able to Add Book
     #Given I am at the Books page
     When user click "Add Book" button
-    Then The "Add Book" form is displayed
+    And user enters book information
+      |Book Name  |The Moon and Sixpence|
+      |ISBN       |1234567890           |
+      |Year       |2001                 |
+      |Author     |Somerset Maugham     |
+      |Description|test                 |
+    And user clicks on "Save changes" button
+    Then confirmation message appears
 
   @AC5@Gulhanim
   Scenario: User should be change number of displayed records on the page
@@ -69,8 +76,8 @@ Feature:  As an authorized user, I should able to access Books  page and and man
     When user click "Edit Book" button
     Then The "Edit Book Information" form is displayed
 
-    @AC6@Roman
+  @AC6@Roman
   Scenario: AC4: User should able to sort records on Books page
-  Given I am at the Books Management page
-  When I click "ISBM"
-  Then "ISBM" coulm should be sort it
+    Given I am at the Books Management page
+    When I click "ISBM"
+    Then "ISBM" coulm should be sort it
