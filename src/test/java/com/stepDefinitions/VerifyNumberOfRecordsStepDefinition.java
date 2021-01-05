@@ -16,7 +16,7 @@ public class VerifyNumberOfRecordsStepDefinition {
 
         Driver.getDriver().get(ConfigurationReader.getProperty("libraryUrl"));
 
-        loginPage.logIn("student");
+        loginPage.logIn("librarian");
 
         loginPage.click_menu_books();
 
