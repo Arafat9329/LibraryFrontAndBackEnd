@@ -36,14 +36,16 @@ Feature:  As an authorized user, I should able to access Books  page and and man
 
 
   @login @AC2 @Dawut
-  Scenario:AC2 Login as a librarian and verify the records are showing correctly with different set up
+  Scenario Outline:AC2 Login as a librarian and verify the records are showing correctly with different set up
     #Given user is on the login page
     #When user logs in
     #Then user should see Library
     #When user click on the Book tab
 
-    And  user select view 5 records per page
-    Then only 5 records are displayed on page
+    And  user select view "<n_number>" of records per page
+    Then only "<n_number>" of records are displayed on page
+    Examples:
+      |n_number|
       | 5   |
       | 10  |
       | 15  |
@@ -52,16 +54,17 @@ Feature:  As an authorized user, I should able to access Books  page and and man
       | 200 |
       | 500 |
 
+
   @addBook @AC3 @Elvira
   Scenario: AC3: User should able to Add Book
     #Given I am at the Books page
     When user click "Add Book" button
     And user enters book information
-      |Book Name  |The Moon and Sixpence|
-      |ISBN       |1234567890           |
-      |Year       |2001                 |
-      |Author     |Somerset Maugham     |
-      |Description|test                 |
+      | Book Name   | The Moon and Sixpence |
+      | ISBN        | 1234567890            |
+      | Year        | 2001                  |
+      | Author      | Somerset Maugham      |
+      | Description | test                  |
     And user clicks on "Save changes" button
     Then confirmation message appears
 
@@ -79,5 +82,5 @@ Feature:  As an authorized user, I should able to access Books  page and and man
   @Search @AC6 @Roman
   Scenario: AC6 User should able to sort records on Books page
   # I am at the Books Management page
-  When I click "ISBN"
-  Then "ISBN" column should be sort it
+    When I click "ISBN"
+    Then "ISBN" column should be sort it

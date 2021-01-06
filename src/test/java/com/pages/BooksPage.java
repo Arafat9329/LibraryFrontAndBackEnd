@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class BooksPage extends BasePage{
     protected String bookInfoInputBox = "//input[@placeholder='%s']";
     protected String descriptionTextArea = "//label[.='%s']/following-sibling::textarea";
     protected String saveChangesBtn = "//button[.='%s']";
+    protected String bookRecordsOnCurrentPage1 = "//tbody//tr";
 
     @FindBy(xpath = "//table[@id='tbl_books']//tbody/tr/td[5]")
     private List<WebElement> allBookCategoriesDisplayed;
@@ -36,7 +38,11 @@ public class BooksPage extends BasePage{
     @FindBy(xpath = "//div[@class='toast-message']")
     private WebElement confirmationMessage;
 
-    public void selectCategory(String category){
+    @FindBy(xpath = "//tbody//tr")
+    private List<WebElement> bookRecordsOnCurrentPage;
+
+    public void selectCategory(String category) {
+
         Select select = BrowserUtilities.getSelectDropdown(categoryDropdownButton);
         select.selectByVisibleText(category);
     }
@@ -150,6 +156,18 @@ public class BooksPage extends BasePage{
         } else {
             return currentSortOrder = "ascending";
         }
+    }
+
+
+    /**
+     *  Getting number of book records showing on current page
+     */
+
+    public int getNumberOfBooksDisplayedInCurrentPage(String numberOfBooks ) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(bookRecordsOnCurrentPage1),Integer.parseInt(numberOfBooks)));
+        return bookRecordsOnCurrentPage.size();
+
     }
 
 
