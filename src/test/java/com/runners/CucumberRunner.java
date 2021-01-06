@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
         glue = "com/stepDefinitions",
         dryRun = false,
         tags = "@Dawut"
+
 )
 
 public class CucumberRunner {

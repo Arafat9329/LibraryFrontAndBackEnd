@@ -1,6 +1,7 @@
 package com.stepDefinitions;
 
 import com.pages.BooksPage;
+import com.utils.BrowserUtilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +15,7 @@ public class AddBookStepDefinitions {
     @When("user click {string} button")
     public void user_click_button(String string) {
         booksPage.clickAddBtn(string);
+        //BrowserUtilities.wait(3);
 
     }
 

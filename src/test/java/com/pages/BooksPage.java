@@ -19,6 +19,13 @@ public class BooksPage extends BasePage{
     protected String descriptionTextArea = "//label[.='%s']/following-sibling::textarea";
     protected String saveChangesBtn = "//button[.='%s']";
     protected String bookRecordsOnCurrentPage1 = "//tbody//tr";
+    protected String searchBox = "//input[@type='search']";
+//    //bekir
+//    protected String searchBox = "//input[@type='search']";
+//    @FindBy(xpath ="//textarea[@id='description']" )
+//    protected WebElement textDescription;
+//    //bekir
+
 
     @FindBy(xpath = "//table[@id='tbl_books']//tbody/tr/td[5]")
     private List<WebElement> allBookCategoriesDisplayed;
@@ -173,6 +180,21 @@ public class BooksPage extends BasePage{
 
 
 
+    public void searchBook(String name){
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath(String.format(searchBox,name)))).sendKeys(name);
+        BrowserUtilities.wait(2);
+
+    }
+
+
+    public void updateBookInfo(String label, String bookInfo) {
+
+        WebElement element =
+                driver.findElement(By.xpath("//input[@placeholder='" + label + "']"));
+        element.clear();
+        BrowserUtilities.waitEnterTextWhenVisible(element,bookInfo);
+    }
 
 
 
