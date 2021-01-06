@@ -32,7 +32,7 @@ public class Hooks {
         System.out.println("scenario.getName() = " + scenario.getName());
         System.out.println("scenario.getSourceTagNames() = " + scenario.getSourceTagNames());
         Driver.getDriver().manage().window().maximize();
-        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After(value = "not @api")

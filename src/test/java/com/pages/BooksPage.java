@@ -2,10 +2,14 @@ package com.pages;
 
 import com.utils.BrowserUtilities;
 import com.utils.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class BooksPage extends BasePage{
 
@@ -14,8 +18,72 @@ public class BooksPage extends BasePage{
     protected String descriptionTextArea = "//label[.='%s']/following-sibling::textarea";
     protected String saveChangesBtn = "//button[.='%s']";
 
+    @FindBy(xpath = "//table[@id='tbl_books']//tbody/tr/td[5]")
+    private List<WebElement> allBookCategoriesDisplayed;
+
+    @FindBy(xpath = "//select[@name='tbl_books_length']")
+    private WebElement showRecordsSelectDropdown;
+
+    @FindBy(xpath = "//a[@title='Next']/..")
+    private WebElement nextPageButton;
+
+    @FindBy(xpath = "//select[@id='book_categories']")
+    private WebElement categoryDropdownButton;
+
+    @FindBy(xpath = "//table[@id='tbl_books']//tbody/tr/td/a")
+    private List<WebElement> allBooksActionsDisplayed;
+
     @FindBy(xpath = "//div[@class='toast-message']")
     private WebElement confirmationMessage;
+
+    public void selectCategory(String category){
+        Select select = BrowserUtilities.getSelectDropdown(categoryDropdownButton);
+        select.selectByVisibleText(category);
+    }
+
+    /**
+     * Clicks on the button "Next" if the button is enabled
+     * @returns boolean true if the button was clicked or false if the button is not enabled
+     */
+    public boolean clickNextPageButton(){
+        String value = wait.until(ExpectedConditions.visibilityOf(nextPageButton)).getAttribute("class");
+        if (value.equals("page-item next")) {
+            nextPageButton.click();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Selects the number of books that we want to display per page
+     * @param optionValue is an Integer that represent the value of the number of books we
+     * want to display. Inside the method, I used the String value of that Integer to choose from the
+     * menu
+     */
+    public void selectNumberOfBooksToBeDisplay(Integer optionValue){
+        Select select = BrowserUtilities.getSelectDropdown(showRecordsSelectDropdown);
+        select.selectByVisibleText(String.valueOf(optionValue));
+    }
+
+    /**
+     * Checks if all the books are from the category selected
+     * @param category
+     */
+    public void booksDisplayCategoryIsCorrect(String category){
+        if(category.equalsIgnoreCase("ALL")){
+            Assert.assertTrue(true);
+            return;
+        }
+
+        selectNumberOfBooksToBeDisplay(500);
+
+        do {
+            List<WebElement> categories = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(allBookCategoriesDisplayed)));
+            for (WebElement eachCategory : categories) {
+                Assert.assertEquals(category, eachCategory.getText().trim());
+            }
+        } while (clickNextPageButton());
+    }
 
     public void clickAddBtn(String btn){
         BrowserUtilities.waitClickOnElement(driver.findElement(By.xpath(String.format(addBookBtn, btn))));
