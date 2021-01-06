@@ -57,11 +57,11 @@ Feature:  As an authorized user, I should able to access Books  page and and man
     #Given I am at the Books page
     When user click "Add Book" button
     And user enters book information
-      |Book Name  |The Moon and Sixpence|
-      |ISBN       |1234567890           |
-      |Year       |2001                 |
-      |Author     |Somerset Maugham     |
-      |Description|test                 |
+      | Book Name   | The Moon and Sixpence |
+      | ISBN        | 1234567890            |
+      | Year        | 2001                  |
+      | Author      | Somerset Maugham      |
+      | Description | test                  |
     And user clicks on "Save changes" button
     Then confirmation message appears
 
@@ -71,13 +71,27 @@ Feature:  As an authorized user, I should able to access Books  page and and man
     Then should display only selected number of pages
 
   @AC6@Bekir
-  Scenario: AC6: User should be able to Edit book
-    Given I am at the Books Management page
+  Scenario Outline: AC6: User should be able to Edit book
+    #Given I am at the Books Management page
+    When user search a book by "<name>" of it
     When user click "Edit Book" button
-    Then The "Edit Book Information" form is displayed
+    And user updates the book information
+      #| Book Name | The Moon and Sixpence |
+      | ISBN        | 1234567898                     |
+      | Year        | 1999                           |
+      | Author      | Somerset Maugham               |
+      | Description | This book is currently missing |
+    And user clicks on "Save changes" button
+    Then confirmation message appears
+    Examples:
+      | name                  |
+      | The Moon and Sixpence |
+
+
+   # Then The "Edit Book Information" form is displayed
 
   @Search @AC6 @Roman
   Scenario: AC6 User should able to sort records on Books page
   # I am at the Books Management page
-  When I click "ISBN"
-  Then "ISBN" column should be sort it
+    When I click "ISBN"
+    Then "ISBN" column should be sort it
