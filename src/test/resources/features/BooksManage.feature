@@ -9,30 +9,30 @@ Feature:  As an authorized user, I should able to access Books  page and and man
   Scenario Outline: AC1 Select one of book category
 
     Then user select "<Categories>" from Book Category
-    And The table should display only "<Category>" books
+    And The table should display only "<Categories>" books
     Examples:
-      | Categories              | Category                |
-      | ALL                     | Action and Adventure    |
-      | Action and Adventure    | Action and Adventure    |
-      | Anthology               | Anthology               |
-      | Classic                 | Classic                 |
-      | Comic and Graphic Novel | Comic and Graphic Novel |
-      | Crime and Detective     | Crime and Detective     |
-      | Drama                   | Drama                   |
-      | Fable                   | Fable                   |
-      | Fairy Tale              | Fairy Tale              |
-      | Fan-Fiction             | Fan-Fiction             |
-      | Fantasy                 | Fantasy                 |
-      | Historical Fiction      | Historical Fiction      |
-      | Horror                  | Horror                  |
-      | Science Fiction         | Science Fiction         |
-      | Biography/Autobiography | Biography/Autobiography |
-      | Humor                   | Humor                   |
-      | Romance                 | Romance                 |
-      | Short Story             | Short Story             |
-      | Essay                   | Essay                   |
-      | Memoir                  | Memoir                  |
-      | Poetry                  | Poetry                  |
+      | Categories              |
+      | ALL                     |
+      | Action and Adventure    |
+      | Anthology               |
+      | Classic                 |
+      | Comic and Graphic Novel |
+      | Crime and Detective     |
+      | Drama                   |
+      | Fable                   |
+      | Fairy Tale              |
+      | Fan-Fiction             |
+      | Fantasy                 |
+      | Historical Fiction      |
+      | Horror                  |
+      | Science Fiction         |
+      | Biography/Autobiography |
+      | Humor                   |
+      | Romance                 |
+      | Short Story             |
+      | Essay                   |
+      | Memoir                  |
+      | Poetry                  |
 
 
   @login @AC2 @Dawut

@@ -5,6 +5,7 @@ import com.utils.ConfigurationReader;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -48,9 +49,10 @@ public class LoginPage extends BasePage {
 
     public String getPageTitle(){
 
-       return pageTitle.getText();
+       return wait.until(ExpectedConditions.visibilityOf(pageTitle)).getText();
 
     }
+
 
 
 }
