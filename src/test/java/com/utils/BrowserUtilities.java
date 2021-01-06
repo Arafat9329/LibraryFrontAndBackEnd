@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -17,7 +18,11 @@ import java.util.List;
 import java.util.Set;
 
 public class BrowserUtilities {
-    private static WebDriverWait wait = new WebDriverWait(Driver.getDriver(),8);
+    private static WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+
+    public static Select getSelectDropdown(WebElement selectDropdown){
+        return new Select(wait.until(ExpectedConditions.visibilityOf(selectDropdown)));
+    }
 
     public static void wait(int seconds) {
         try {
@@ -28,6 +33,7 @@ public class BrowserUtilities {
     }
 
     public static void waitClickOnElement(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
