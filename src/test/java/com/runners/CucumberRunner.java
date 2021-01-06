@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/stepDefinitions",
         dryRun = false,
-        tags = "@addBook"
+        tags = "@AC6@Bekir"
 )
 
 public class CucumberRunner {
