@@ -33,7 +33,6 @@ public class AddBookStepDefinitions {
     @And("user clicks on {string} button")
     public void user_clicks_on_button(String string) {
        booksPage.clickSaveChangesBtn(string);
-
     }
 
     @Then("confirmation message appears")
