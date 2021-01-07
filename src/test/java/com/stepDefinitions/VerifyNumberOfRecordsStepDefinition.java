@@ -11,6 +11,7 @@ import org.junit.Assert;
 
 public class VerifyNumberOfRecordsStepDefinition {
     LoginPage loginPage = new LoginPage();
+    BooksPage booksPage = new BooksPage();
 
     @Given("I am at the Books Management page")
     public void i_am_at_the_books_management_page() {
@@ -27,14 +28,30 @@ public class VerifyNumberOfRecordsStepDefinition {
 
 
 
-    @Given("user select view {int} records per page")
-    public void user_select_view_records_per_page(Integer int1) {
+    @Given("user select view {string} of records per page")
+    public void user_select_view_of_records_per_page(String numberOfBooks) {
+        booksPage.selectNumberOfBooksToBeDisplay(Integer.parseInt(numberOfBooks));
+
+
 
     }
-    @Then("only {int} records are displayed on page")
-    public void only_records_are_displayed_on_page(Integer int1, io.cucumber.datatable.DataTable dataTable) {
+
+
+    @Then("only {string} of records are displayed on page")
+    public void only_of_records_are_displayed_on_page(String numberOfBooks) {
+
+
+        int actualNumberOfBookRecords = booksPage.getNumberOfBooksDisplayedInCurrentPage(numberOfBooks);
+        int expectedNumberOfBooksRecords = Integer.valueOf(numberOfBooks);
+
+        Assert.assertEquals("Expected number of books doesn't match with actual books displayed on current page!!!",expectedNumberOfBooksRecords,actualNumberOfBookRecords);
+
+
 
     }
+
+
+
 
 
 
