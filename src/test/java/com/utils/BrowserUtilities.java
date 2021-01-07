@@ -20,6 +20,7 @@ import java.util.Set;
 public class BrowserUtilities {
     private static WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
 
+
     public static Select getSelectDropdown(WebElement selectDropdown){
         return new Select(wait.until(ExpectedConditions.visibilityOf(selectDropdown)));
     }
@@ -40,6 +41,7 @@ public class BrowserUtilities {
     public static void waitVisibilityOfElement(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
 
         public static void waitClickWithJS(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
