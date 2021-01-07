@@ -28,7 +28,7 @@ public class VerifyNumberOfRecordsStepDefinition {
 
 
     @Given("user select view {int} records per page")
-    public void user_select_view_records_per_page(Integer int1) {
+    public void user_select_view_ecords_per_page(Integer int1) {
 
     }
     @Then("only {int} records are displayed on page")
