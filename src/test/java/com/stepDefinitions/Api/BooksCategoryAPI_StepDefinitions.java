@@ -1,25 +1,18 @@
 package com.stepDefinitions.Api;
 
-import com.utils.ConfigurationReader;
+import com.utils.DB_Utils;
 import com.utils.LibraryUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 import org.junit.Assert;
-import org.slf4j.Logger;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.config;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
 public class BooksCategoryAPI_StepDefinitions {
@@ -27,6 +20,7 @@ public class BooksCategoryAPI_StepDefinitions {
 
     public String librarianToken;
     Response response;
+    JsonPath jsonData;
 
 
 
@@ -54,7 +48,7 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify each object in the response array contains id and name")
     public void verify_each_object_in_the_response_array_contains_id_and_name() {
-        JsonPath jsonData = response.jsonPath();
+        jsonData = response.jsonPath();
         List<Map<String, String>> list = jsonData.getList("");
 
         System.out.println(list.get(0));
@@ -69,7 +63,7 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify ids are numeric strings")
     public void verify_ids_are_numeric_strings() {
-        JsonPath jsonData = response.jsonPath();
+         jsonData = response.jsonPath();
         try {
             List<Integer> ids = jsonData.getList("id", Integer.class);
         }catch (RuntimeException e){
@@ -81,14 +75,14 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify that book categories are same in database")
     public void verify_that_book_categories_are_same_in_database() {
-        System.out.println("pending step");
+        DB_Utils.createDBConnectionLibrary();
+        DB_Utils.runQuery("SELECT id, name FROM book_categories;");
+        List<Map<String, String>> DBCategories = DB_Utils.getAllDataAsListOfMap();
+        List<Map<String, String>> categoriesJsonResponse = jsonData.getList("");
+
+        Assert.assertEquals("The records in DB don not match the API response"
+                , DBCategories, categoriesJsonResponse);
+
     }
-
-
-
-
-
-
-
 
 }
