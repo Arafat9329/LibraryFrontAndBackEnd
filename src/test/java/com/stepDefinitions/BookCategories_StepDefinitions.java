@@ -1,12 +1,11 @@
 package com.stepDefinitions;
 
 import com.pages.BooksPage;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.*;
 
 public class BookCategories_StepDefinitions {
 
     private BooksPage booksPage = new BooksPage();
-
 
     @Then("user select {string} from Book Category")
     public void user_select_from_book_category(String category) {

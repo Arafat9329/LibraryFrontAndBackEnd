@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
     @Before(value = "@api")
     public void setUpAPI() {
+        System.out.println("Setting api");
         baseURI= ConfigurationReader.getProperty("qa2");
 //        baseURI= "http://library2.cybertekschool.com";
 //        basePath="/rest/v1";

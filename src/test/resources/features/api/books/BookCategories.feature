@@ -1,8 +1,5 @@
 Feature: Book Categories
 
-  Background:
-    Given user has librarian authorization
-
   #dont use POJO
   @RG @api @librarian
   Scenario: Test GET request to end point "/get_book_categories"
