@@ -10,11 +10,11 @@ import org.junit.runner.RunWith;
         plugin = {
                 "rerun:target/rerun.txt",
                 "json:target/cucumber.json"
-        },
-        features = "src/test/resources/features",
-        glue = "com/stepDefinitions",
-        dryRun = false,
-        tags = "@Dawut"
+        }
+        ,features = "src/test/resources/features"
+        ,glue = "com/stepDefinitions"
+       // ,dryRun = true
+        ,tags = "@RG and @api"
 
 )
 
