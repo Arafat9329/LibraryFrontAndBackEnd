@@ -15,7 +15,7 @@ Feature:Get Book By Id
 
   @Arpat
   Scenario:
-    Given librarian can get book by id.
+    Given librarian can get book by id 200.
     When make a request as a student, use a valid id (to make sure that you always use valid id, you may have to create  new book)
     Then verify content type json
     And verify status code 202

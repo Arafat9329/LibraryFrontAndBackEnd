@@ -6,10 +6,9 @@ import io.cucumber.java.en.When;
 
 public class API_books_BookCategoriesStepDefinitions {
 
-    @Given("librarian can get book by id.")
+    @Given("librarian can get book by id {int}.")
     public void librarian_can_get_book_by_id() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
 
