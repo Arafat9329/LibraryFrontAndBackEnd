@@ -28,8 +28,8 @@ public class LibraryUtils {
                 given()
                         //.log().all()
                         .contentType( ContentType.URLENC  )
-                        .formParam("email", ConfigurationReader.getProperty("librarian2.Username"))
-                        .formParam("password",ConfigurationReader.getProperty("librarian2.Password")).
+                        .formParam("email", ConfigurationReader.getProperty("Librarian2Username"))
+                        .formParam("password",ConfigurationReader.getProperty("Librarian2Password")).
                         when()
                         .post("http://library2.cybertekschool.com/rest/v1/login").
                         then()
