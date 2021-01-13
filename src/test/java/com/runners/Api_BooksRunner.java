@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
                 "json:target/cucumberAPi_BorrowingBookRunner.json"
         },
         features = "src/test/resources/features/api/books",
-        glue = "com/stepDefinitions",
-        dryRun = true,
+        glue = "com/stepDefinitions/Api",
+        dryRun = false,
         tags = "@Arpat"
 
 )
