@@ -3,22 +3,17 @@ package com.stepDefinitions.Api;
 import com.POJO.BookPayLoad;
 import com.utils.ConfigurationReader;
 import com.utils.LibraryUtils;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.path.json.JsonPath;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 public class UpdateBookStepDefinitions {
 
     private static String token;
@@ -33,29 +28,6 @@ public class UpdateBookStepDefinitions {
 
     }
 
-
-//    @Test
-//    public void test() {
-//
-////       token =   given()
-////                .log().all()
-////                .contentType(ContentType.URLENC)
-////                .formParam("email" , ConfigurationReader.getProperty("Librarian1UserName"))
-////                .formParam("password", ConfigurationReader.getProperty("Librarian1Password")).
-////                        when()
-////                .post("http://library1.cybertekschool.com/rest/v1/login").
-////                        then().log().all()
-////                .extract()
-////                .jsonPath().getString("token");
-//        token =  LibraryUtils.getTokenBy_Env(ConfigurationReader.getProperty("qa1"),
-//                ConfigurationReader.getProperty("Librarian1UserName"),
-//                ConfigurationReader.getProperty("Librarian1Password"));
-//        book_id = given()
-//                .header("x-library-token", token).body(payLoad)
-//                .when().post("add_book").then().extract().jsonPath().getString("book_id");
-//        System.out.println(book_id);
-
-//    }
 
     @When("send a post request to create a new book")
     public void send_a_post_request_to_create_a_new_book(Map<String,String> payLoad) {
@@ -74,12 +46,6 @@ public class UpdateBookStepDefinitions {
                 pathParam("id", book_id).
                 when().
                 get("/get_book_by_id/{id}").jsonPath().getObject("",BookPayLoad.class);
-
-
-
-         //bookPayLoad = jsonPath.getObject("",BookPayLoad.class);
-       System.out.println(bookPayLoad);
-
 
     }
     @When("send a patch request to update year")
