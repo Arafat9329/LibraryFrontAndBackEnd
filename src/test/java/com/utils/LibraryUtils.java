@@ -16,10 +16,10 @@ public class LibraryUtils {
                 .formParam("email" , ConfigurationReader.getProperty(email))
                 .formParam("password", ConfigurationReader.getProperty(password)).
         when()
-                .post(environment+"/login").
-        then()
+                .post(environment+"login").
+        then().log().all()
                 .extract()
-                .jsonPath().getString("Token");
+                .jsonPath().getString("token");
     }
 
 
@@ -28,7 +28,7 @@ public class LibraryUtils {
                 given()
                         //.log().all()
                         .contentType( ContentType.URLENC  )
-                        .formParam("email", ConfigurationReader.getProperty("Librarian2Username"))
+                        .formParam("email", ConfigurationReader.getProperty("Librarian2UserName"))
                         .formParam("password",ConfigurationReader.getProperty("Librarian2Password")).
                         when()
                         .post("/v1/login").

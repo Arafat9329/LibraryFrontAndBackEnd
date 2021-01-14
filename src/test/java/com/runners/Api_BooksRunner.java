@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/api/books",
         glue = "com/stepDefinitions/Api",
         dryRun = false,
-        tags = "@Arpat"
+        tags = "@Dawud and @api"
 
 )
 
