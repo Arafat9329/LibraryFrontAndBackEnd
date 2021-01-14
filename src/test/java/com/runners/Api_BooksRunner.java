@@ -9,14 +9,14 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {
                 "rerun:target/rerun.txt",
-                "json:target/cucumber.json"
+                "json:target/cucumberAPi_BorrowingBookRunner.json"
         },
-        features = "src/test/resources/features",
-        glue = "com/stepDefinitions",
+        features = "src/test/resources/features/api/books",
+        glue = "com/stepDefinitions/Api",
         dryRun = false,
-        tags = "@Dawut"
+        tags = "@Arpat"
 
 )
 
-public class CucumberRunner {
+public class Api_BooksRunner {
 }

@@ -41,5 +41,4 @@ public class Login_ApiStepDefinitions {
      String token = response.path("token") ;
         Assert.assertFalse(token.isEmpty());
     }
-
 }
