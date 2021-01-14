@@ -33,7 +33,6 @@ public class BooksCategoryAPI_StepDefinitions {
                     when()
                         .get(getCategories).prettyPeek();
 
-
     }
 
     @Then("verify status code {int}")

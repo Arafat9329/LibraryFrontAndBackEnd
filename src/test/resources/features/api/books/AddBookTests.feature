@@ -10,13 +10,13 @@ Feature:AddBook
       | details | details: "/add_book" |
 
 
-  @Dilayr
+  @Dilyar
   Scenario:librarian can add books.
-    Given send a request as a librarian to create a new book
-    Then verify status code 201
-    And verify content type json
+    Given send a request as a "librarian" to create a new book
+#    Then verify status code 201
+#    And verify content type json
     And verify response contain "message": "The book has been created."
-    And verify response contains book_id.
+    And verify response contains book_id
     And Book_id must a numeric string
 
 @Elv
