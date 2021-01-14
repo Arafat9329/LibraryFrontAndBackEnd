@@ -10,4 +10,3 @@ Feature: UpdateBook
     And sending get request should show updated year
     And other fields should stay same
 
-
