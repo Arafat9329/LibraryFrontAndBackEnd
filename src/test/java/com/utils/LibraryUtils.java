@@ -22,16 +22,14 @@ public class LibraryUtils {
                 .jsonPath().getString("token");
     }
 
-
     public static String getTokenDefault_Env(){
         return
                 given()
-                        //.log().all()
                         .contentType( ContentType.URLENC  )
                         .formParam("email", ConfigurationReader.getProperty("Librarian2UserName"))
                         .formParam("password",ConfigurationReader.getProperty("Librarian2Password")).
                         when()
-                        .post("/v1/login").
+                        .post("/login").
                         then()
                         //.log().all()
                         .assertThat()
@@ -43,7 +41,6 @@ public class LibraryUtils {
                         .getString("token");
 
     }
-
 
     public static String getStudentTokenDefault_Env(){
         return
