@@ -1,4 +1,4 @@
-package com.stepDefinitions;
+package com.stepDefinitions.Ui;
 
 import com.utils.LibraryUtils;
 import io.cucumber.java.en.And;
@@ -103,37 +103,37 @@ public class GetBookByID_StepDefinitions {
         System.out.println("bookID = " + bookID);
     }
 
-    @Then("verify content type json")
-    public void verify_content_type_json() {
-        resSpecBuilder = new ResponseSpecBuilder();
-        responseSpec = resSpecBuilder
-                .expectContentType(ContentType.JSON)
-                .build();
+//    @Then("verify content type json")
+//    public void verify_content_type_json() {
+//        resSpecBuilder = new ResponseSpecBuilder();
+//        responseSpec = resSpecBuilder
+//                .expectContentType(ContentType.JSON)
+//                .build();
+//
+//
+//        given()
+//                .spec(requestSpec).
+//        when()
+//                .get("get_book_by_id/{id}",bookID).
+//        then()
+//                .spec(responseSpec);
+//    }
 
-
-        given()
-                .spec(requestSpec).
-        when()
-                .get("get_book_by_id/{id}",bookID).
-        then()
-                .spec(responseSpec);
-    }
-
-    @And("verify status code {int}")
-    public void verify_status_code(Integer int1) {
-        resSpecBuilder = new ResponseSpecBuilder();
-        responseSpec = resSpecBuilder
-                .expectStatusCode(int1)
-                .build();
-
-
-        given()
-                .spec(requestSpec).
-        when()
-                .get("get_book_by_id/{id}",bookID).
-        then()
-                .spec(responseSpec);
-    }
+//    @And("verify status code {int}")
+//    public void verify_status_code(Integer int1) {
+//        resSpecBuilder = new ResponseSpecBuilder();
+//        responseSpec = resSpecBuilder
+//                .expectStatusCode(int1)
+//                .build();
+//
+//
+//        given()
+//                .spec(requestSpec).
+//        when()
+//                .get("get_book_by_id/{id}",bookID).
+//        then()
+//                .spec(responseSpec);
+//    }
 
     @And("verify response body in get book by ID")
     public void verify_response_body_in_get_book_by_id() {

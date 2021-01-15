@@ -1,4 +1,4 @@
-package com.stepDefinitions;
+package com.stepDefinitions.Ui;
 
 import com.pages.BooksPage;
 import io.cucumber.java.en.*;

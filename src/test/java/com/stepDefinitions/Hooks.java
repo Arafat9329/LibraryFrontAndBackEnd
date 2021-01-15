@@ -45,7 +45,7 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
 
-      //  Driver.closeDriver();
+        Driver.closeDriver();
         System.out.println(":::(^_^) End of test execution (^_^):::");
     }
 
