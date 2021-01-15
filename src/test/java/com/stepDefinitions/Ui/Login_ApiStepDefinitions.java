@@ -1,4 +1,4 @@
-package com.stepDefinitions;
+package com.stepDefinitions.Ui;
 
 import com.utils.ConfigurationReader;
 import io.cucumber.java.en.Given;

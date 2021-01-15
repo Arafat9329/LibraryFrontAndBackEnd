@@ -12,11 +12,11 @@ import org.junit.runner.RunWith;
                 "json:target/cucumberAPi_BorrowingBookRunner.json"
         },
         features = "src/test/resources/features/api/books",
-        glue = "com/stepDefinitions/Api",
+        glue = "com/stepDefinitions",
         dryRun = false,
-        tags = "@Dawud and @api"
+        tags = "@api"
 
 )
 
-public class Api_BooksRunner {
+public class ApiRunner {
 }

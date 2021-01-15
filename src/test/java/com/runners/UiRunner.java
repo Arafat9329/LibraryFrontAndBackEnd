@@ -7,14 +7,11 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = "src/test/resources/features/api",
+        features = "src/test/resources/features",
         glue = "com/stepDefinitions",
-        dryRun = true,
-        tags = "@api"
-
+        dryRun = false,
+        tags = "@ui"
 )
 
-
-
-public class TestRunner {
+public class UiRunner {
 }
