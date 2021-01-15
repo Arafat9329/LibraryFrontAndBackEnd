@@ -1,18 +1,22 @@
 Feature: UpdateBook
 
-  @Dawud
-  Scenario:
-    Given librarian update books
-#  create a new book
-#  update book year information
-#  verify response type json
-#  verify status code 200
-#  verify json response:
-#  {
-#  "message": "The book has been updated."
-#  }
-#
-#  get the book information
-#  verify that year is updated
-#  verify that all other fields are not updated
+  @Dawud @api
+  Scenario:as a librarian I should be able to update books
+    Given as a librarian
+    When send a post request to create a new book
+    |name|IntelliJ|
+    |isbn|2222    |
+    |year|4444    |
+    |author|dawud |
+    |book_category_id|1|
+    |description     |this is test|
+
+    And  send a patch request to update year
+    |5555|
+    Then status code should be 200
+    And json response should be
+      | The book has been updated.|
+    And sending get request should show updated year
+    And other fields should stay same
+
 
