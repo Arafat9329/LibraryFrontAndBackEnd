@@ -107,6 +107,7 @@ public class BooksPage extends BasePage{
     }
 
     public void enterDescription(String label, String text){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(descriptionTextArea,label)))).clear();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(descriptionTextArea,label)))).sendKeys(text);
     }
 
