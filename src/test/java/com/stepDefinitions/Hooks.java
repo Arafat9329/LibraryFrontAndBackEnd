@@ -27,7 +27,7 @@ public class Hooks {
         reset();
     }
 
-    @Before(value = "not @api")
+    @Before(value = "@ui")
     public void setup(Scenario scenario) {
         System.out.println(":::(*_*) Starting Automation (*_*) :::");
         System.out.println("scenario.getName() = " + scenario.getName());
@@ -36,7 +36,7 @@ public class Hooks {
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @After(value = "not @api")
+    @After(value = "@ui")
     public void tearDown(Scenario scenario ) {
         System.out.println("scenario.isFailed() = " + scenario.isFailed());
 
