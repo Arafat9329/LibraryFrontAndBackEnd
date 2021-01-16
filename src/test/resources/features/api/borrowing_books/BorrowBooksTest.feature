@@ -1,14 +1,12 @@
-
+@api
 Feature: BorrowBokks
 
-#  @Nurshat
-  Scenario:
- # Create a new student.
- # Save id of that student in class variable
- # Get token for that student and save it class variable.
- # For all queries below use that student id and token. Do not use token from auth utility. Do not use other student_ids
- # Each test below must run order based on the name. Tests are dependent on each other. If any test fails, rest should not execute.
- # Feel free to create any additional variables, methods as you see fit.
+@Nurshat
+Scenario:
+  Given Create a new student.
+  When Save id of that student in class variable
+  Then Get token for that student and save it class variable.
+
 
 #  @Roman
 #  Scenario:
