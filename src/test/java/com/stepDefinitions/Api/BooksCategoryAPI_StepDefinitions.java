@@ -13,7 +13,6 @@ import org.junit.Assert;
 import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class BooksCategoryAPI_StepDefinitions {
@@ -29,8 +28,9 @@ public class BooksCategoryAPI_StepDefinitions {
     public void librarian_sends_a_get_request_to_end_point(String getCategories) {
         librarianToken = LibraryUtils.getTokenDefault_Env();
         //givenRequestSpecs =
-         response = given()
-                        .header("x-library-token", librarianToken).
+        Hooks.response = Hooks.givenSpec.
+//    response = given()
+//                        .header("x-library-token", librarianToken).
                     when()
                         .get(getCategories).prettyPeek();
 
@@ -48,7 +48,7 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify each object in the response array contains id and name")
     public void verify_each_object_in_the_response_array_contains_id_and_name() {
-        jsonData = response.jsonPath();
+        jsonData = Hooks.response.jsonPath();
         List<Map<String, String>> list = jsonData.getList("");
 
         System.out.println(list.get(0));
@@ -63,7 +63,7 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify ids are numeric strings")
     public void verify_ids_are_numeric_strings() {
-         jsonData = response.jsonPath();
+         jsonData = Hooks.response.jsonPath();
         try {
             List<Integer> ids = jsonData.getList("id", Integer.class);
         }catch (RuntimeException e){
