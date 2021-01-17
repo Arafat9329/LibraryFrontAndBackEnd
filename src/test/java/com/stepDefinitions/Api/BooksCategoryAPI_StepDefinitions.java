@@ -79,10 +79,9 @@ public class BooksCategoryAPI_StepDefinitions {
         DB_Utils.runQuery("SELECT id, name FROM book_categories;");
         List<Map<String, String>> DBCategories = DB_Utils.getAllDataAsListOfMap();
         List<Map<String, String>> categoriesJsonResponse = jsonData.getList("");
-
+        System.out.println("categoriesJsonResponse = " + categoriesJsonResponse);
         Assert.assertEquals("The records in DB don not match the API response"
                 , DBCategories, categoriesJsonResponse);
-
     }
 
 }
