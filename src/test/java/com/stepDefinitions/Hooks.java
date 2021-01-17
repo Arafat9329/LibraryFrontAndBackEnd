@@ -2,25 +2,42 @@ package com.stepDefinitions;
 
 import com.utils.ConfigurationReader;
 import com.utils.Driver;
+import com.utils.LibraryUtils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import io.restassured.http.ContentType;
-import static io.restassured.RestAssured.* ;
-import static org.hamcrest.Matchers.* ;
 
 import java.util.concurrent.TimeUnit;
 
+import static io.restassured.RestAssured.*;
+
 public class Hooks {
+    public static RequestSpecification givenSpec ;
+    public static Response response;
+
     @Before(value = "@api")
-    public void setUpAPI() {
+    public void setUpAPI(Scenario scenario) {
+        System.out.println(scenario.getSourceTagNames());
         System.out.println("@BeforeAPI");
         baseURI= ConfigurationReader.getProperty("qa2");
-//        baseURI= "http://library2.cybertekschool.com";
-//        basePath="/rest/v1";
+        if(scenario.getSourceTagNames().contains("@student")){
+            String studentToken = LibraryUtils.getStudentTokenDefault_Env();
+            givenSpec =
+                    given()
+                            .header("x-library-token", studentToken);
+        }else {
+            String librarianToken = LibraryUtils.getTokenDefault_Env();
+            givenSpec =
+                    given()
+                            .header("x-library-token", librarianToken);
+        }
+
     }
+
 
     @After(value = "@api")
     public void tearDownAPI(){

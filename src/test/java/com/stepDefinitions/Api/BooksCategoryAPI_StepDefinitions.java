@@ -1,5 +1,6 @@
 package com.stepDefinitions.Api;
 
+import com.stepDefinitions.Hooks;
 import com.utils.DB_Utils;
 import com.utils.LibraryUtils;
 import io.cucumber.java.en.Given;
@@ -37,12 +38,12 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify status code {int}")
     public void verify_status_code(Integer expectedStatusCode) {
-        response.then().statusCode(is(expectedStatusCode));
+        Hooks.response.then().statusCode(is(expectedStatusCode));
     }
 
     @Then("verify content type json")
     public void verify_content_type_json() {
-       response.then().contentType(ContentType.JSON);
+        Hooks.response.then().contentType(ContentType.JSON);
     }
 
     @Then("verify each object in the response array contains id and name")

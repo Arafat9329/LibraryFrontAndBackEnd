@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/stepDefinitions",
         dryRun = true,
-        tags = "@borrowingBooksAC3"
+        tags = "@api"
 
 )
 

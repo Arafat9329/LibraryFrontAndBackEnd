@@ -11,8 +11,8 @@ Feature: Get Book By Id
   @Arpat
   Scenario:librarian can get book by id 200.
     Given  make a request as a librarian, use a valid id 200
-    Then arp.verify content type json
-    And arp.verify status code 200
+    Then verify content type json
+    And verify status code 200
     And based on the sample below, verify that response contains all following field with with values not empty or null
       | id               | 200                                                                                             |
       | name             | Alectura lathami                                                                                |
