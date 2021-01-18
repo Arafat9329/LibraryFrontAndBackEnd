@@ -26,7 +26,7 @@ public class BorrowBooksTest1AC3StepDefinitions {
                 .givenSpec.
         when()
                 .get(string)
-//                .prettyPeek()
+                .prettyPeek()
                 .jsonPath();
 
     }
@@ -34,10 +34,13 @@ public class BorrowBooksTest1AC3StepDefinitions {
     @When("Select any book_id of any book from the response where value of disabled is equal to {int}")
     public void select_any_book_id_of_any_book_from_the_response_where_value_of_disabled_is_equal_to(Integer int1) {
 
+//        List<String>allBookss= jp.getList("findAll{it.disabled.equals('1')}.collect{'name is '+ it.name+' id is '+it.id}");
+//        System.out.println("allBookss = " + allBookss);
+
         List<BorrowingBooks> allBooks=jp.getList("",BorrowingBooks.class);
         availableForBorrow= new ArrayList<>(allBooks);
         availableForBorrow.removeIf(eachBook -> eachBook.getDisabled()!=int1);
-        //availableForBorrow.forEach(System.out::println);
+        availableForBorrow.forEach(System.out::println);
     }
 
     @Then("Save the book name")
@@ -60,13 +63,13 @@ public class BorrowBooksTest1AC3StepDefinitions {
     @Then("Verify response contains  {string}: {string},")
     public void verify_response_contains(String string1, String string2) {
         Hooks.response.then().body(string1,is(string2));
-       Hooks.response.then().log().body();
+       //Hooks.response.then().log().body();
     }
 
     @Then("Verify response contains book_borrow_id with valid numeric string")
     public void verify_response_contains_book_borrow_id_with_valid_numeric_string() {
        String bookId = Hooks.response.then().extract().jsonPath().getString("book_borrow_id");
-       System.out.println("json = " + bookId);
+       //System.out.println("json = " + bookId);
 
        for (char eachCar:bookId.toCharArray()){
            Assert.assertTrue(Character.isDigit(eachCar));
