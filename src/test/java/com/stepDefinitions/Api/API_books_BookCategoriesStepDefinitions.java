@@ -4,6 +4,7 @@ import com.stepDefinitions.Hooks;
 import com.utils.LibraryUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.restassured.http.ContentType;
 
 import java.util.Map;
 
@@ -24,13 +25,13 @@ public class API_books_BookCategoriesStepDefinitions {
 
     @Then("arp.verify status code {int}")
     public void verify_status_code(Integer expectedStatusCode) {
-        response.then().statusCode(is(expectedStatusCode));
+       Hooks.response.then().statusCode(is(expectedStatusCode));
     }
 
     @Then("arp.verify content type json")
     public void verify_content_type_json2() {
 
-        response.then().contentType(ContentType.JSON);
+        Hooks.response.then().contentType(ContentType.JSON);
     }
 
     @Then("based on the sample below, verify that response contains all following field with with values not empty or null")
