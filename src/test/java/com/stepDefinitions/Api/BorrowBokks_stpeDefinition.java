@@ -1,21 +1,21 @@
 package com.stepDefinitions.Api;
 
 import com.POJO.StudentUserPayLoad;
-import com.github.fge.jsonschema.library.Library;
-import com.utils.ConfigurationReader;
 import com.utils.JavaFakerUtil;
 import com.utils.LibraryUtils;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 public class BorrowBokks_stpeDefinition {
 
     private  String token= LibraryUtils.getTokenDefault_Env();
     private Response response;
-    private String id;
+    protected static String user_id;
     private static Response studentResponse;
 
    static StudentUserPayLoad studentUserPayLoad;
@@ -38,10 +38,10 @@ public class BorrowBokks_stpeDefinition {
 
     @When("Save id of that student in class variable")
     public void save_id_of_that_student_in_class_variable() {
-     id=  response.then()
+     user_id =  response.then()
                .log().body()
                .extract().body().path("user_id");
-        System.out.println(id);
+        System.out.println(user_id);
 
     }
     @Then("Get token for that student and save it class variable.")

@@ -14,23 +14,16 @@ Scenario:
 #  # Verify response 200
 #  # Verify empty array/body
 
+  @borrowingBooksAC3@student
+  Scenario: TEST TWO
+    Given Get all books for borrowing using "/get_book_list_for_borrowing"
+    When Select any book_id of any book from the response where value of disabled is equal to 1
+    Then Save the book name
+    And Borrow the book using that book and the student created above using "/book_borrow"
+    Then verify status code 200
+    And Verify response contains  "message": "The book has been borrowed...",
+    And Verify response contains book_borrow_id with valid numeric string
 
-#  /**
-#  TEST TWO
-#  Get all books for borrowing using /get_book_list_for_borrowing.
-#  Select any book_id of any book from the response where value of disabled is equal to 1 (do it manually see the response to see what that means. If no books are available for borrowing, create new books)
-#  {
-#  "id": "1011",
-#  "name": "A Catskill Eagle (Mrs. Tuyet Rodriguez) - 1990",
-#  "disabled": "0"
-#  },
-#  Save the book name
-#  Borrow the book using that book and the student created above using /book_borrow
-#  Verify code 200
-#  Verify response contains  "message": "The book has been borrowed...",
-#  Verify response contains book_borrow_id with valid numeric string
-#  **/
-#
 #  /**
 #  TEST THREE
 #  Get borrowed books using /get_borrowed_books_by_user/{user_id}

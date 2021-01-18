@@ -39,7 +39,7 @@
                     <forkCount>2C</forkCount>
                     <perCoreThreadCount>true</perCoreThreadCount>
                     <includes>
-                        <include>**/CucumberRunner.java</include>
+                        <include>**/ApiRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>

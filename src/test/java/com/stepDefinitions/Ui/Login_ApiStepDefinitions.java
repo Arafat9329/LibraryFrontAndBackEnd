@@ -19,7 +19,7 @@ public class Login_ApiStepDefinitions {
     response = given()
                 .log().all()
                 .contentType(ContentType.URLENC) //contenType=text
-                .formParam("email", ConfigurationReader.getProperty("Librarian2Username"))
+                .formParam("email", ConfigurationReader.getProperty("Librarian2UserName"))
                 .formParam("password",ConfigurationReader.getProperty("Librarian2Password")).
               when()
                 .post("/login");
