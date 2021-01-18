@@ -11,10 +11,11 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "json:target/cucumberAPi_BorrowingBookRunner.json"
         },
-        features = "src/test/resources/features/api",
+        features = "src/test/resources/features",
         glue = "com/stepDefinitions",
         dryRun = false,
         tags = "@Nurbiye"
+
 
 )
 

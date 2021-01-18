@@ -36,8 +36,6 @@ public class BookCategoryPojo_StepDefinitions {
                              .get(getCategories).
                  then()
                             .extract().response();
-
-
     }
 
     @Then("pojo verify status code {int}")
@@ -89,7 +87,6 @@ public class BookCategoryPojo_StepDefinitions {
     @And("pojo verify that book categories are same in database")
     public void pojoVerifyThatBookCategoriesAreSameInDatabase() {
 
-
         DB_Utils.createDBConnectionLibrary();
         DB_Utils.runQuery("select id, name From book_categories");
         List<Map<String, String>> allDataAsListOfMap = DB_Utils.getAllDataAsListOfMap();
@@ -108,14 +105,7 @@ public class BookCategoryPojo_StepDefinitions {
             assertThat(id,is(id1));
             assertThat(name,is(name1));
 
-
         }
-
-
-
-
-
-
 
     }
 }
