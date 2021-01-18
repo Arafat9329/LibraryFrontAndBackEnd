@@ -31,6 +31,7 @@ public class API_books_BookCategoriesStepDefinitions {
 
     @Then("arp.verify content type json")
     public void verify_content_type_json2() {
+
         response.then().contentType(ContentType.JSON);
     }
 

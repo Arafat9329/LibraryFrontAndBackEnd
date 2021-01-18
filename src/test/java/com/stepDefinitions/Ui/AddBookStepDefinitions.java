@@ -21,8 +21,8 @@ public class AddBookStepDefinitions {
     }
 
     @And("user enters book information")
-    public void user_enters_book_information(Map<String,String> map) {
-        for(Map.Entry<String, String> entry: map.entrySet()) {
+    public void user_enters_book_information(Map<String, String> map) {
+        for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println("Key: " + entry.getKey() + ", value: " + entry.getValue());
             if (entry.getKey().equals("Description")) {
                 booksPage.enterDescription(entry.getKey(), entry.getValue());
@@ -35,12 +35,14 @@ public class AddBookStepDefinitions {
 
     @And("user clicks on {string} button")
     public void user_clicks_on_button(String string) {
-       booksPage.clickSaveChangesBtn(string);
+        booksPage.clickSaveChangesBtn(string);
     }
 
     @Then("confirmation message appears")
     public void confirmation_message_appears() {
         booksPage.confirmationMessageIsDisplayed();
 
+
     }
+
 }

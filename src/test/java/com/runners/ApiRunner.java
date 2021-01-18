@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/api",
         glue = "com/stepDefinitions",
         dryRun = false,
-        tags = "@Nurshat"
+        tags = "@Nurbiye"
 
 )
 

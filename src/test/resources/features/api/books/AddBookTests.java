@@ -8,8 +8,8 @@ public class AddBookTests {
         verify status code 403
         verify reponse body:
          {
-           error": "Unauthorized Access",
-           "details": "details": "/add_book"
+           "error": "Unauthorized Access",
+            "details": "/add_book"
            }
 
      TEST CASE: librarian add books

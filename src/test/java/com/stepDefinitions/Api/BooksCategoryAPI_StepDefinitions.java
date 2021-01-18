@@ -42,7 +42,8 @@ public class BooksCategoryAPI_StepDefinitions {
 
     @Then("verify content type json")
     public void verify_content_type_json() {
-       response.then().contentType(ContentType.JSON);
+
+        response.then().contentType(ContentType.JSON);
     }
 
     @Then("verify each object in the response array contains id and name")
