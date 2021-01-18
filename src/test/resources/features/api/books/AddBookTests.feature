@@ -1,14 +1,24 @@
 @api
 Feature:AddBook
 
-#  @Nurbiye
-#  Scenario:student can't add books.
-#    Given send a request as a student to create a new book.
-#    Then verify content type json
-#    And verify status code 403
-#    And verify reponse body:
-#      | error   | Unauthorized Access  |
-#      | details | details: "/add_book" |
+  @Nurbiye
+  Scenario:student can not add books.
+    Given as a student
+    #send a request as a student to create a new book.
+    When send a post request and create a new book:
+      | name             | Moon       |
+      | isbn             | 23904      |
+      | year             | 2020       |
+      | author           | Nur        |
+      | book_category_id | 32         |
+      | description      | nonfiction |
+     Then content type is json
+     And  status code is 403
+     And  verify response body:
+         | error   |  Unauthorized Access  |
+         | details |  /add_book |
+
+
 
   @Dilyar
   Scenario:librarian can add books.
@@ -18,6 +28,8 @@ Feature:AddBook
     And verify response contain "message": "The book has been created."
     And verify response contains book_id
     And Book_id must a numeric string
+
+
 
 #@Elv
 #  Scenario:
